@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, width=device-width, height=device-height"> -->
+    <link rel="stylesheet" href="../assets/style/index.css" />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@100;300;400&display=swap"> -->
+    <script defer src="../assets/Javascript/index.js"></script>
+    <title>Interactive Story</title>
+</head>
+
+<body>
+    <audio id="intro-audio">
+        <source src="../assets/audios/intro.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="tic-tac-audio">
+        <source src="../assets/audios/tic-tac-time.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="boom-audio">
+        <source src="../assets/audios/boom.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="game-over-audio">
+        <source src="../assets/audios/game-over.wav" type="audio/mpeg" />
+    </audio>
+    <audio id="winning-audio">
+        <source src="../assets/audios/winning.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="bear">
+        <source src="../assets/audios/bear.wav" type="audio/mpeg" />
+    </audio>
+
+    <div class="container">
+        <div class="intro-container" id="intro-container">
+            <div id="intro" data-section="1">
+                <h1 id="main-title" class="title">Tarry And Mary's Adventure</h1>
+                <div class="paragraphs-slide">
+                    <p class="text">Welcome to Tarry And Mary's Adventure Story</p>
+                    <p class="text">
+                        Once upon a time, Tarry and his sister Mary were lost in the
+                        woods. After trying to find their way back for two long days, they
+                        were finally tired.
+                    </p>
+                    <p class="text">
+                        They sat on the straw only to find themselves sitting on a large
+                        locked box, and they realised a large treasure was hidden in
+                        there!
+                    </p>
+                    <p class="text">
+                        They tried by all means to open it or even break it.
+                    </p>
+                    <p class="text">
+                        Suddenly, the earth shook and a genie appeared to them, and said:
+                    </p>
+                    <p class="text">
+                        "Many people have found this treasure before you, yet it remained
+                        locked, for no one was able to find the lost key!"
+                    </p>
+                    <p class="text">
+                        "And many have died while looking for the key! If either of you
+                        has the courage to take on this adventure to search for the key,
+                        I’ll give you the instructions".
+                    </p>
+                    <p class="text">
+                        “Sure, we will both take it on!” replied Tarry and Mary
+                    </p>
+                    <p class="text">
+                        “Only one person is allowed to go! But beware, he might not
+                        return, he might be eaten by a wild animal, or he might fall into
+                        a trap.” said genie
+                    </p>
+                    <p class="text">”Ok, one of us will take this risk!” they said</p>
+                    <div class="intro-text10 text">
+                        <p>
+                            ”The one who goes, has to go this way. He/she will find a house
+                            and a hut. He/she will have to choose to search in
+                            <span>one</span> of the two!
+                            <span>Beware of wild animals.</span> In the place you choose,
+                            you only have <span>one minute</span> to come out, otherwise,
+                            you will be killed. In each room you enter, there are three places to look in. In one of
+                            them, there is
+                            <span>a hidden trap</span>,
+                            if you fall into it, you will die! Good luck!”
+                        </p>
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <div class="characters">
+                    <img src="../assets/images/boy.png" class="character-img" />
+                    <img src="../assets/images/girl.png" class="character-img" />
+                </div>
+                <a href="#" class="start-btn">Start</a>
+            </div>
+        </div>
+
+        <!-- ******Setting the timer****** -->
+        <div id="timer" class="timer">
+            <p>timer :&nbsp;</p>
+            <div class="timer-container">01:00</div>
+        </div>
+
+        <!-- ******Display the selected character****** -->
+        <div class="character-selected">
+            <img src="../assets/images/boy.png" class="tarry-img" />
+            <img src="../assets/images/girl.png" class="mary-img" />
+            <p class="character-name"></p>
+        </div>
+
+        <!-- ******The back button****** -->
+        <a href="#" class="back-btn">Back to doors</a>
+
+        <!-- ******Choosing a character****** -->
+        <div id="characters" data-section="2">
+            <h1 class="title">Who will volunteer to go search for the key?</h1>
+            <div class="character-options options">
+                <div class="option character-option">
+                    <a id="boy-character" href="#houses"></a>
+                    <h3>Tarry</h3>
+                </div>
+                <div class="option character-option">
+                    <a id="girl-character" href="#houses"></a>
+                    <h3>Mary</h3>
+                </div>
+            </div>
+            <h1 class="title">The counter will start after choosing the character</h1>
+        </div>
+
+        <!-- ******After choosing a character****** -->
+        <div id="houses" data-section="3">
+            <h1 class="title">Where do you want to search for the key?</h1>
+            <h1 class="title">Beware of wild animals...</h1>
+            <div class="options houses-options">
+                <div class="option house-option">
+                    <a href="#home"></a>
+                    <h3>The House</h3>
+                </div>
+                <div class="option house-option">
+                    <a href="#hut" id="hut-click"></a>
+                    <h3>The Hut</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ******After choosing the House****** -->
+        <div id="home" data-section="4" class="options home-options">
+            <div class="option home-option">
+                <a href="#kitchen"></a>
+                <h3>Kitchen</h3>
+            </div>
+            <div class="option home-option">
+                <a href="#living-room"></a>
+                <h3>Living Room</h3>
+            </div>
+            <div class="option home-option">
+                <a href="#bedroom"></a>
+                <h3>Bedroom</h3>
+            </div>
+        </div>
+
+        <!-- ******After choosing the kitchen****** -->
+        <div id="kitchen" data-section="5" class="options kitchen-options">
+            <div class="option kitchen-option">
+                <a href="#kitchen-cupboards" id="kitchen-cupboards"></a>
+                <h3>Cupboards</h3>
+            </div>
+            <div class="option kitchen-option">
+                <a href="#kitchen-refrigerator" id="kitchen-refrigerator"></a>
+                <h3>Refrigerator</h3>
+            </div>
+            <div class="option kitchen-option">
+                <a href="#kitchen-dishwasher" id="kitchen-dishwasher"></a>
+                <h3>Dishwasher</h3>
+            </div>
+        </div>
+
+        <!-- ******After choosing the bedroom****** -->
+        <div id="bedroom" data-section="6" class="options bedroom-options">
+            <div class="option bedroom-option">
+                <a href="#bedroom-bed" id="bedroom-bed"></a>
+                <h3>Bed</h3>
+            </div>
+            <div class="option bedroom-option">
+                <a href="#bedroom-dressing-table" id="bedroom-dressing-table"></a>
+                <h3>Dressing table</h3>
+            </div>
+            <div class="option bedroom-option">
+                <a href="#bedroom-closet" id="bedroom-closet"></a>
+                <h3>Closet</h3>
+            </div>
+        </div>
+
+        <!-- ******After choosing the Living room****** -->
+        <div id="living-room" data-section="7" class="options living-room-options">
+            <div class="option living-room-option">
+                <a href="#living-room-sofa" id="living-room-sofa"></a>
+                <h3>Sofa</h3>
+            </div>
+            <div class="option living-room-option">
+                <a href="#living-room-table" id="living-room-table"></a>
+                <h3>Table</h3>
+            </div>
+            <div class="option living-room-option">
+                <a href="#living-room-bookshelf" id="living-room-bookshelf"></a>
+                <h3>Bookshelf</h3>
+            </div>
+        </div>
+
+        <!-- ******After choosing the Hut****** -->
+        <div class="trap bear-attack">
+            <h1>The Bear Is Here!</h1>
+            <h2>He ate you!</h2>
+            <p class="trap-gameover">Game Over</p>
+            <img src="../assets/images/attack/attacking-bear.png" alt="Bear image when choosing the hut">
+            <!-- <a href="./index.html" class="try-again-btn">Try again ?</a> -->
+        </div>
+
+        <!-- for the trap in the sections -->
+        <div id="boom-trap" class="trap">
+            <h1>Boom!!!</h1>
+            <h2>You've selected a trap</h2>
+            <p class="trap-gameover">Game Over</p>
+            <img src="../assets/images/attack/boom.png" alt="Boom image when entering a trap">
+        </div>
+        <a href="./index.html" class="try-again-btn">Try again ?</a>
+
+
+        <!-- not the correct choice for the key -->
+        <div class="empty-selection">
+            <h1>Opps...</h1>
+            <h2>No key in this place</h2>
+        </div>
+
+        <!-- game-over & congrats sections -->
+        <div class="game-over">
+            <h1>Game Over</h1>
+            <h3>You ran out of time</h3>
+            <h3>Your fate is death</h3>
+        </div>
+        <div class="congrats">
+            <h1>Congratulations</h1>
+            <h3>You've found the key</h3>
+            <h4>This is your reward</h4>
+            <div class="treasure">
+                <img src="../assets/images/treasure/key2.png">
+                <img src="../assets/images/treasure/treasure1.png">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
